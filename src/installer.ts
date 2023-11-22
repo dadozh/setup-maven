@@ -2,6 +2,7 @@
 // Load tempDirectory before it gets wiped by tool-cache
 let tempDirectory = process.env['RUNNER_TEMPDIRECTORY'] || '';
 
+
 import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 import * as path from 'path';
@@ -21,13 +22,14 @@ if (!tempDirectory) {
 }
 
 export async function getMaven(version: string, localPath?: string) {
-  let toolPath: string;
-  toolPath = tc.find('maven', version);
+  // let toolPath: string;
+  // toolPath = tc.find('maven', version);
 
-  if (!toolPath) {
-    toolPath = await extractMaven(version, localPath);
-  }
-
+  // if (!toolPath) {
+  //   toolPath = await extractMaven(version, localPath);
+  // }
+  let toolPath: string = await extractMaven(version, localPath);
+  
   toolPath = path.join(toolPath, 'bin');
   core.addPath(toolPath);
 }
