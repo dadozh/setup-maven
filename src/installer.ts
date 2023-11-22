@@ -21,7 +21,7 @@ if (!tempDirectory) {
   tempDirectory = path.join(baseLocation, 'actions', 'temp');
 }
 
-export async function getMaven(version: string, downloadUrl?: string, localPath?: string) {
+export async function getMaven(version: string, localPath?: string, downloadUrl?: string) {
   let toolPath: string;
   toolPath = tc.find('maven', version);
 
@@ -33,7 +33,7 @@ export async function getMaven(version: string, downloadUrl?: string, localPath?
   core.addPath(toolPath);
 }
 
-async function downloadMaven(version: string, downloadUrl?: string, localPath?: string): Promise<string> {
+async function downloadMaven(version: string, localPath?: string, downloadUrl?: string ): Promise<string> {
   if (localPath) {
     // Use the locally stored file
     const extractedPath = await tc.extractTar(localPath);
