@@ -1,11 +1,10 @@
 
+// Load tempDirectory before it gets wiped by tool-cache
+let tempDirectory = process.env['RUNNER_TEMPDIRECTORY'] || '';
 
 import * as core from '@actions/core';
 import * as tc from '@actions/tool-cache';
 import * as path from 'path';
-
-// Load tempDirectory before it gets wiped by tool-cache
-let tempDirectory = process.env['RUNNER_TEMPDIRECTORY'] || '';
 
 if (!tempDirectory) {
   let baseLocation: string;
